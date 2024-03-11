@@ -11,7 +11,7 @@ Typescript Executor for [ProtocolDesigner](https://protocoldesigner.dev)
 Install in your project:
 
 ```bash
-$ npm install -D protocol-executor
+$ npm install -D @protocoldesigner-dev/protocol-executor
 ```
 
 Usge:

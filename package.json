@@ -1,5 +1,5 @@
 {
-  "name": "protocol-executor",
+  "name": "@protocoldesigner-dev/protocol-executor",
   "version": "0.1.0",
   "description": "Protocol executor for TypeScript",
   "main": "lib/main/index.js",
