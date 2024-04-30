@@ -2,7 +2,7 @@
   "compilerOptions": {
     "incremental": true,
     "target": "es2017",
-    "outDir": "lib/main",
+    "outDir": "lib/cjs",
     "rootDir": "src",
     "moduleResolution": "node",
     "module": "commonjs",

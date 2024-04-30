@@ -2,8 +2,8 @@
   "extends": "./tsconfig",
   "compilerOptions": {
     "target": "esnext",
-    "outDir": "lib/module",
+    "outDir": "lib/esm",
     "module": "esnext"
   },
-  "exclude": ["node_modules/**"]
+  "exclude": ["node_modules/**", "src/wizard/**"]
 }

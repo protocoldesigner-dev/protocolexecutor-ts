@@ -16,39 +16,46 @@ $ npm install -D @protocoldesigner-dev/protocol-executor
 
 Usge:
 
-1.initialize the protocol exported from [ProtocolDesigner](https://protocoldesigner.dev):
+1.build and verify your protocol in the [editor](https://protocoldesigner.dev/editor).
+
+A traffic cross example:
+
+![landing](https://protocoldesigner.dev/landing.png)
+
+2.initialize the protocol exported in json format:
 ```typescript
 const exec = new ProtocolExecutor(m);
 ```
 
-2.register hook:
+3.register hook:
 ```typescript
-function actionA(e :DefaultEvent, from :string, to :string){
-  console.log("actionA invoked");
+// do stop road H
+function stopH(e :DefaultEvent, from :string, to :string){
+  console.log("stop road h");
   console.log(e, from, to);
 }
 exec.registerHook({
-  node: 'n',
-  action: 'eventA'
-}, actionA)
+  node: 'H',
+  action: 'HS Stop'
+}, stopH)
 ```
 
-3.start the execution:
+4.start the execution:
 ```typescript
 //You can also register hooks at INIT and START phases.  
 exec.init();
 exec.start();
 const events = [
-  {node: 'n', action: 'eventA'},
-  {node: 'n', action: 'eventB'},
-  {node: 'n', action: 'eventC'},
-  {node: 'n', action: 'eventD'},
+  {node: 'Traffic cross', action: 'VS Start'},
+  {node: 'Traffic cross', action: 'HL Start'},
+  {node: 'Traffic cross', action: 'VL Start'},
+  {node: 'Traffic cross', action: 'HS Start'},
 ]
-//periodically issue events
+//periodically issue events to simulate the traffic cross
 var i=0;
 setInterval(function(){
     const t = exec.issueEvent(events[i++ % 4])
-    //you can await on t for accepted or completed status.
+    //wait for accepted or completed status.
     t.accpeted().then((result)=>{...})
     t.finished().then((result)=>{...})
 }, 1000)

@@ -1,10 +1,10 @@
 {
   "name": "@protocoldesigner-dev/protocol-executor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Protocol executor for TypeScript",
-  "main": "lib/main/index.js",
-  "typings": "lib/main/index.d.ts",
-  "module": "lib/module/index.js",
+  "main": "lib/cjs/index.js",
+  "typings": "lib/cjs/index.d.ts",
+  "module": "lib/esm/index.js",
   "repository": "https://github.com/protocoldesigner-dev/protocolexecutor-ts",
   "author": "ProtocolDesigner Team <dev@protocoldesigner.dev> (https://protocoldesigner.dev)",
   "license": "MIT",
@@ -16,8 +16,8 @@
   ],
   "scripts": {
     "build": "npm-run-all build:*",
-    "build:main": "tsc -p tsconfig.json",
-    "build:module": "tsc -p tsconfig.module.json",
+    "build:cjs": "tsc -p tsconfig.json",
+    "build:esm": "tsc -p tsconfig.module.json",
     "fix": "npm-run-all fix:*",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
     "fix:lint": "eslint src --ext .ts --fix",
@@ -45,8 +45,8 @@
     "typescript": "^4.9.5"
   },
   "files": [
-    "lib/main",
-    "lib/module",
+    "lib/cjs",
+    "lib/esm",
     "!**/*.json",
     "LICENSE",
     "README.md"
@@ -56,7 +56,7 @@
     "timeout": "10s",
     "typescript": {
       "rewritePaths": {
-        "src/": "lib/main/"
+        "src/": "lib/cjs/"
       },
       "compile": false
     },
@@ -66,5 +66,8 @@
   },
   "prettier": {
     "singleQuote": true
+  },
+  "bin": {
+    "WizardGenerator": "bin/WizardGenerator.js"
   }
 }
